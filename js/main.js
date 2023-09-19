@@ -43,8 +43,23 @@ function traverseSurveyData() {
   // Count the number of "No" responses,
   // Count the number of "Maybe" responses,
   // and output the results in the outputEl.
+  let countYes = 0;
+  let countNo = 0;
+  let countMaybe = 0;
 
-  outputEl.innerHTML = "Survey Data";
+  for (let i = 0; i < surveyData.length; i++) {
+    if (surveyData[i] === "Yes") {
+      countYes += 1;
+    }
+    else if (surveyData[i] === "No") {
+      countNo += 1;
+    }
+    else if (surveyData[i] === "Maybe") {
+      countMaybe += 1;
+    }
+  }
+
+  outputEl.innerHTML = `Yes(${countYes}) No(${countNo}) Maybe(${countMaybe})`;
   console.log(surveyData);
 }
 
@@ -56,7 +71,28 @@ function traverseAgeData() {
   // Count the number of ages above 65,
   // and output the results in the outputEl.
 
-  outputEl.innerHTML = "Age Data";
+  let count18under = 0;
+  let count18to35 = 0;
+  let count36to65 = 0;
+  let countAbove65 = 0;
+
+  for (let i = 0; i < ageData.length; i++) {
+    if(ageData[i] < 18) {
+      count18under += 1;
+    }
+    else if(ageData[i] >= 18 && ageData[i] < 36) {
+      count18to35 += 1;
+    }
+    else if(ageData[i] >= 36 && ageData[i] <= 65){
+      count36to65 += 1;
+    }
+    else if(ageData[i] > 65) {
+      countAbove65 += 1;
+    }
+  }
+
+  outputEl.innerHTML = `Under 18(${count18under}) 18 to 35(${count18to35}) 
+  36 to 65(${count36to65}) Above 65(${countAbove65})`;
   console.log(ageData);
 }
 
@@ -66,6 +102,18 @@ function traverseNumberData() {
   // Count the number of odd numbers,
   // and output the results in the outputEl.
 
-  outputEl.innerHTML = "Number Data";
+  let countEven = 0;
+  let countOdd = 0;
+
+  for (let i = 0; i < numberData.length; i++) {
+    if(numberData[i] % 2 === 0) {
+      countEven += 1;
+    }
+    else {
+      countOdd += 1;
+    }
+  }
+
+  outputEl.innerHTML = `Even (${countEven}) Odd (${countOdd})`;
   console.log(numberData);
 }
